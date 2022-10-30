@@ -8,13 +8,14 @@ apiRandom.use(logger());
 apiRandom.get('/', async (req, res) => {
   req.logger.info(`Ruta: ${req.baseUrl} || Método: ${req.method}`);
   let cant = req.query.cant ?? 100000000;
-  const result = fork('./src/child.process.js');
-  result.send(cant);
-  result.on('message', (values) => {
-    res.send({
-      data: values,
-    });
-  });
+  // const result = fork('./src/child.process.js');
+  // result.send(cant);
+  // result.on('message', (values) => {
+  //   res.send({
+  //     data: values,
+  //   });
+  // });
+  res.send({ cant });
 });
 
 export default apiRandom;
